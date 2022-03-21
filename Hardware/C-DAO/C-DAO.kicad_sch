@@ -3885,7 +3885,7 @@
     (property "Value" "AudioJack2" (id 1) (at 277.622 111.5572 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Footprint" "CustomConnectors:Cliff CL13843G 3.5mm mono jack" (id 2) (at 273.05 109.22 0)
+    (property "Footprint" "footprints:Cliff CL13843G 3.5mm mono jack" (id 2) (at 273.05 109.22 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 273.05 109.22 0)
@@ -5707,7 +5707,7 @@
       (reference "J2") (unit 1) (value "Bus-connector") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical")
     )
     (path "/2c3333c1-1d3b-4fef-86cb-fa21eaf94d16"
-      (reference "J3") (unit 1) (value "AudioJack2") (footprint "CustomConnectors:Cliff CL13843G 3.5mm mono jack")
+      (reference "J3") (unit 1) (value "AudioJack2") (footprint "footprints:Cliff CL13843G 3.5mm mono jack")
     )
     (path "/0f4e15c9-19dc-4733-be5f-cbe0672a543b"
       (reference "J5") (unit 1) (value "Conn_02x03_Odd_Even") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Horizontal")

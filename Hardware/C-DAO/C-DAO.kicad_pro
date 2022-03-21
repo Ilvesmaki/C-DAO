@@ -386,8 +386,8 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
-      "vrml": ""
+      "step": "../../CAD/C-DAO_board.step",
+      "vrml": "../../CAD/C-DAO.wrl"
     },
     "page_layout_descr_file": ""
   },
