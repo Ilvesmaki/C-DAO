@@ -11,16 +11,26 @@
 
 #include <Arduino.h>
 #include "signal_generator.h"
+#include "frequency.h"
 
 DAC f_dac;
 ModeSelect f_modeSelect;
+Frequency f_frequency;
 SignalGenerator f_generator;
 
 MODESELECT_mode_e f_mode;
 
+void timerCallback()
+{
+    f_generator.Execute();
+}
+
 void setup() {
     f_generator.SetDac(&f_dac);
     f_mode = MODESELECT_DISABLED;
+
+    f_frequency.SetCallback(timerCallback);
+    f_frequency.SetEnable(true);
 }
 
 void loop() {
