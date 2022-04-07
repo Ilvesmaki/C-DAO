@@ -8,3 +8,23 @@
  * @copyright Copyright (c) 2022
  * 
  */
+
+#include "mode_select.h"
+#include "dac.h"
+
+class SignalGenerator
+{
+public:
+    SignalGenerator();
+    ~SignalGenerator();
+
+    void SetDac(DAC* dac);
+    void SetMode(MODESELECT_mode_e mode);
+
+    // One cycle is 255 values
+    void Execute();
+private:
+    DAC* m_dac;
+    MODESELECT_mode_e m_mode;
+    uint8_t m_lutIndex;
+};

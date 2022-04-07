@@ -103,7 +103,7 @@ void ModeSelect::ReadPinState()
     }
 }
 
-MODESELECT_mode_t ModeSelect::GetMode()
+MODESELECT_mode_e ModeSelect::GetMode()
 {
     return m_mode;
 }

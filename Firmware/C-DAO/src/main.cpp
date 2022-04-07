@@ -10,17 +10,26 @@
  */
 
 #include <Arduino.h>
-#include "dac.h"
-#include "mode_select.h"
+#include "signal_generator.h"
 
-ModeSelect f_modeSelect;
 DAC f_dac;
+ModeSelect f_modeSelect;
+SignalGenerator f_generator;
+
+MODESELECT_mode_e f_mode;
 
 void setup() {
-
+    f_generator.SetDac(&f_dac);
+    f_mode = MODESELECT_DISABLED;
 }
 
 void loop() {
     f_modeSelect.ReadPinState();
-    f_dac.SetLevel(0);
+    MODESELECT_mode_e newMode = f_modeSelect.GetMode();
+
+    if(newMode != f_mode)
+    {
+        f_mode = newMode;
+        f_generator.SetMode(f_mode);
+    }
 }

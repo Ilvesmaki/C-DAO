@@ -20,7 +20,7 @@ typedef enum {
     MODESELECT_SINE,
     MODESELECT_SQUARE,
     MODESELECT_TRIANGLE
-} MODESELECT_mode_t;
+} MODESELECT_mode_e;
 
 class ModeSelect 
 {
@@ -29,8 +29,8 @@ public:
     ~ModeSelect();
 
     void ReadPinState();
-    MODESELECT_mode_t GetMode();
+    MODESELECT_mode_e GetMode();
 
 private:
-    MODESELECT_mode_t m_mode;
+    MODESELECT_mode_e m_mode;
 };
