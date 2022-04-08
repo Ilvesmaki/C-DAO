@@ -10,9 +10,11 @@
  */
 
 #include <Arduino.h>
+#include "dac.h"
 #include "signal_generator.h"
 #include "frequency.h"
 #include "midi.h"
+#include "midi_notes.h"
 #include "waveforms.h"
 
 MidiReceiver f_midiReceiver;
@@ -56,7 +58,7 @@ void loop() {
     }
     else if (midicommand.cmd == MIDI_NOTE_OFF)
     {
-
+        f_frequency.SetEnable(false);
     }
 } 
 
@@ -64,7 +66,10 @@ uint32_t PitchToProgramFrequency(uint8_t pitch)
 {
     uint32_t noteFreq_Hz = 0;
 
-    // TODO: midi pitch to freq lut
+    if (pitch < MIDI_NOTE_COUNT)
+    {
+        noteFreq_Hz = (uint32_t)(MIDINOTES[pitch]);
+    }
 
     return noteFreq_Hz * WAVEFORM_LUT_SIZE;
 }

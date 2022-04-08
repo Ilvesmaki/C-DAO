@@ -48,8 +48,11 @@ MIDI_data_t MidiReceiver::TryGetCommand()
 
 void MidiReceiver::AddByteToBuffer(uint8_t byte)
 {
-    m_buffer[2] = m_buffer[1];
-    m_buffer[1] = m_buffer[0];
+    for (uint8_t i = MIDI_CMD_SIZE; i > 1; i--)
+    {
+        m_buffer[i-1] = m_buffer[i-2];
+    }
+
     m_buffer[0] = byte;
 }
 
@@ -59,6 +62,11 @@ MIDI_data_t MidiReceiver::TryDecodeCommand()
 
     if ((BT2 & 0xF0) == 0x90)
     {
+        // Note on message consists of 3 bytes that are received in order:
+        // status byte: 1001 CCCC, CCCC is channel from 0 to 15
+        // Data byte 1: 0PPP PPPP, 7 bit note pitch 0 to 127
+        // Data byte 2: 0VVV VVVV, 7 bit velocity 0 to 127
+
         data.cmd = MIDI_NOTE_ON;
         data.channel = BT2 & 0x0F;
         data.pitch = BT1;
@@ -66,6 +74,9 @@ MIDI_data_t MidiReceiver::TryDecodeCommand()
     }
     else if ((BT2 & 0xF0) == 0x80)
     {
+        // Note off message is similar to note on but satus byte is as follows:
+        // status byte: 1000 CCCC, CCCC is channel from 0 to 15
+
         data.cmd = MIDI_NOTE_OFF;
         data.channel = BT2 & 0x0F;
         data.pitch = BT1;
