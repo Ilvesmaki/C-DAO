@@ -9,6 +9,9 @@
  * 
  */
 
+#ifndef DAC_H
+#define DAC_H
+
 #include "stdint.h"
 
 class DAC 
@@ -19,3 +22,5 @@ public:
 
     void SetLevel(uint8_t level);
 };
+
+#endif // DAC_H

@@ -9,6 +9,9 @@
  * 
  */
 
+#ifndef WAVEFORMS_H
+#define WAVEFORMS_H
+
 #define WAVEFORM_SINE 0
 #define WAVEFORM_SQUARE 1
 #define WAVEFORM_TRIANGLE 2
@@ -122,3 +125,5 @@ const uint8_t WAVEFORMS[WAVEFORM_COUNT][WAVEFORM_LUT_SIZE] = {
     0x0e, 0x0c, 0x0a, 0x08, 0x06, 0x04, 0x02, 0x00,
     }
 };
+
+#endif // WAVEFORMS_H

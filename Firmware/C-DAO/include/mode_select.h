@@ -9,6 +9,9 @@
  * 
  */
 
+#ifndef MODE_SELECT_H
+#define MODE_SELECT_H
+
 #include "avr/io.h"
 
 #define MODE_SINE_PIN       PINC2
@@ -34,3 +37,5 @@ public:
 private:
     MODESELECT_mode_e m_mode;
 };
+
+#endif // MODE_SELECT_H

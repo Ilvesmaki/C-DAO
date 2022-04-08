@@ -9,6 +9,9 @@
  * 
  */
 
+#ifndef MIDI_H
+#define MIDI_H
+
 #include "stdint.h"
 
 #define MIDI_CMD_SIZE 3
@@ -41,3 +44,5 @@ private:
     MIDI_data_t TryDecodeCommand();
     uint8_t m_buffer[MIDI_CMD_SIZE];
 };
+
+#endif // MIDI_H

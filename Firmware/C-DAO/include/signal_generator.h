@@ -9,6 +9,9 @@
  * 
  */
 
+#ifndef SIGNAL_GENERATOR_H
+#define SIGNAL_GENERATOR_H
+
 #include "mode_select.h"
 #include "dac.h"
 
@@ -28,3 +31,5 @@ private:
     MODESELECT_mode_e m_mode;
     uint8_t m_lutIndex;
 };
+
+#endif // SIGNAL_GENERATOR_H

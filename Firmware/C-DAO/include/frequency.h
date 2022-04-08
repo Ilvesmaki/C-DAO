@@ -9,6 +9,9 @@
  * 
  */
 
+#ifndef FREQUENCY_H
+#define FREQUENCY_H
+
 #include "stdint.h"
 
 typedef void (*callback_f)();
@@ -23,3 +26,5 @@ public:
     void SetFrequency(uint32_t freq);
     void SetCallback(callback_f callback);
 };
+
+#endif // FREQUENCY_H
