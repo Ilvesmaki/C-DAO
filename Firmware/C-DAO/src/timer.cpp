@@ -9,7 +9,7 @@
  * 
  */
 
-#include "frequency.h"
+#include "timer.h"
 #include "Arduino.h"
 
 #define CPU_HZ F_CPU
@@ -39,7 +39,7 @@ static uint8_t CalculateOCR0AValue(uint32_t freq_Hz)
     return (uint8_t)((float)(OCR0A_COEF)* period_s);
 }
 
-Frequency::Frequency()
+Timer::Timer()
 {
     TCCR0A = (1 << WGM01);
     OCR0A = CalculateOCR0AValue(0);
@@ -49,12 +49,12 @@ Frequency::Frequency()
     TCCR0B |= (1 << CS01);
 }
 
-Frequency::~Frequency()
+Timer::~Timer()
 {
 
 }
 
-void Frequency::SetEnable(bool set)
+void Timer::SetEnable(bool set)
 {
     if (set)
     {
@@ -66,12 +66,12 @@ void Frequency::SetEnable(bool set)
     }
 }
 
-void Frequency::SetFrequency(uint32_t freq)
+void Timer::SetFrequency(uint32_t freq)
 {
     OCR0A = CalculateOCR0AValue(freq);
 }
 
-void Frequency::SetCallback(callback_f callback)
+void Timer::SetCallback(callback_f callback)
 {
     f_callback = callback;
 }

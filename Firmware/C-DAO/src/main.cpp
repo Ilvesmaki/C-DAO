@@ -12,7 +12,7 @@
 #include <Arduino.h>
 #include "dac.h"
 #include "signal_generator.h"
-#include "frequency.h"
+#include "timer.h"
 #include "midi.h"
 #include "midi_notes.h"
 #include "waveforms.h"
@@ -20,7 +20,7 @@
 MidiReceiver f_midiReceiver;
 DAC f_dac;
 ModeSelect f_modeSelect;
-Frequency f_frequency;
+Timer f_timer;
 SignalGenerator f_generator;
 
 MODESELECT_mode_e f_mode;
@@ -36,8 +36,8 @@ void setup() {
     f_generator.SetDac(&f_dac);
     f_mode = MODESELECT_DISABLED;
 
-    f_frequency.SetCallback(timerCallback);
-    f_frequency.SetEnable(false);
+    f_timer.SetCallback(timerCallback);
+    f_timer.SetEnable(false);
 }
 
 void loop() {
@@ -53,12 +53,12 @@ void loop() {
 
     if (midicommand.cmd == MIDI_NOTE_ON)
     {
-        f_frequency.SetFrequency(PitchToProgramFrequency(midicommand.pitch));
-        f_frequency.SetEnable(true);
+        f_timer.SetFrequency(PitchToProgramFrequency(midicommand.pitch));
+        f_timer.SetEnable(true);
     }
     else if (midicommand.cmd == MIDI_NOTE_OFF)
     {
-        f_frequency.SetEnable(false);
+        f_timer.SetEnable(false);
     }
 } 
 

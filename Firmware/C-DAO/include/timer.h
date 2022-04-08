@@ -9,22 +9,22 @@
  * 
  */
 
-#ifndef FREQUENCY_H
-#define FREQUENCY_H
+#ifndef TIMER_H
+#define TIMER_H
 
 #include "stdint.h"
 
 typedef void (*callback_f)();
 
-class Frequency
+class Timer
 {
 public:
-    Frequency();
-    ~Frequency();
+    Timer();
+    ~Timer();
 
     void SetEnable(bool set);
     void SetFrequency(uint32_t freq);
     void SetCallback(callback_f callback);
 };
 
-#endif // FREQUENCY_H
+#endif // TIMER_H
